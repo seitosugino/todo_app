@@ -40,5 +40,16 @@ class MainActivity : AppCompatActivity() {
                 .setNegativeButton("キャンセル",null)
                 .show()
         }
+
+        lv.setOnItemClickListener { adapterView, view, i, l ->
+            AlertDialog.Builder(this)
+                .setTitle("削除しますか？")
+                .setPositiveButton("Yes",DialogInterface.OnClickListener { _, _ ->
+                    adapter.remove(adapter.getItem(i))
+                    adapter.notifyDataSetChanged()
+                })
+                .setNegativeButton("No",null)
+                .show()
+        }
     }
 }
